@@ -135,3 +135,4 @@ data_step1_models/
 data_step2_prediction/
 saved_model/
 saved_model_local/
+out*/
