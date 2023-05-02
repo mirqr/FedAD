@@ -125,7 +125,7 @@ def main() -> None:
     path = 'out'+args.num_clients+'/'+'output_'+args.out_fold+'/'+args.data_name+'/'
     res_and_save(model,x_train,x_test,y_train, y_test, args.partition, path)
 
-    # save model if you want 
+    # save model 
     # model.save('saved_model_local/'+args.data_name+'/'+args.partition)
     
 
@@ -152,7 +152,7 @@ def main() -> None:
         path = 'out'+args.num_clients+'/'+'output_local/'+args.data_name+'/'
         res_and_save(model_local,x_train,x_test,y_train, y_test, args.partition, path)
 
-        # save model if you want 
+        # save model 
         # model_local.save('saved_model_local/'+args.data_name+'/'+args.partition)
 
 
@@ -229,8 +229,6 @@ def load_partition(idx: str, data_name:str = 'mnist'):
 
     #return x_train_local, x_test_local
     return x_train_local, x_test_local, y_train_out_local, y_test_out_local
-
-
 
 
 
