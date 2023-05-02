@@ -21,7 +21,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-To run the code, set a configuration in the runconfig.py file and follow the Jupyter notebooks:
+To run the code, set a configuration in the runconfig.py file and run the Jupyter notebooks in the following order:
 
 1. **step_1.ipynb**: This notebook contains the code for the community detection phase.
 2. **step_2.ipynb**: This notebook contains the code for the federated anomaly detection phase.
