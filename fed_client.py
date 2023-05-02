@@ -16,8 +16,8 @@ from sorcery import dict_of
 from fed_models import *
 from datautil import *
 
-import config
 
+import runconfig
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1" # deactivate gpu 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
@@ -176,7 +176,7 @@ def distancess(x,x_pred):
 def my_predict(model, x_train, x_test, y_train, y_test):
     x_train_pred = model.predict(x_train)
     distances = distancess(x_train, x_train_pred)
-    contamination = config.get_config_dict()["outlier_fraction"]
+    contamination = runconfig.get_config_dict()["outlier_fraction"]
     threshold = np.percentile(distances, 100 * (1 - contamination))
 
     x_test_pred = model.predict(x_test)
@@ -209,7 +209,7 @@ def load_partition(idx: str, data_name:str = 'mnist'):
     x_train, y_train, x_test, y_test = get_dataset(data_name, flatten_and_normalize=True)
     n_features = np.prod(x_train.shape[1:])   
 
-    datasets = partition(x_train, y_train, num_clients_per_class=config.get_config_dict()['num_clients_per_class'])
+    datasets = partition(x_train, y_train, num_clients_per_class=runconfig.get_config_dict()['num_clients_per_class'])
     x_train_local = datasets[idx].iloc[:,:n_features].to_numpy()
     y_train_out_local =  datasets[idx]['y_out'].to_numpy()
     #print(idx,'train_set\n',datasets[idx]['y_class'].value_counts())
@@ -218,7 +218,7 @@ def load_partition(idx: str, data_name:str = 'mnist'):
     
     
     # partition the test set like the train set
-    #datasets_test = partition(x_test, y_test, config.get_config_dict()['num_clients_per_class'])        
+    #datasets_test = partition(x_test, y_test, runconfig.get_config_dict()['num_clients_per_class'])        
     #x_test_local = datasets_test[idx].iloc[:,:n_features].to_numpy()
     #y_test_out_local =  datasets_test[idx]['y_out'].to_numpy()
     #print(idx,'test_set\n',datasets_test[idx]['y_class'].value_counts())

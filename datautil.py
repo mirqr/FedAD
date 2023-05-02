@@ -6,14 +6,15 @@ import pandas as pd
 from joblib import dump, load
 import tensorflow as tf
 
-import config 
+import runconfig
+
 
 # "Device" class
 # A class that represents a devices. It helps to manage the step 1 of the algorithm
 class Dev:
     def __init__(self, name: str, dataset_name: str, x: pd.DataFrame, y_class):
 
-        self.config = config.get_config_dict()
+        self.config = runconfig.get_config_dict()
         
         self.name = name
         self.dataset_name = dataset_name
@@ -152,7 +153,7 @@ def in_range(x, ref, association_threshold):
 # - for each class there are "num_clients_per_class clients" partition
 # - each partition has (1.0 - outlier_fraction) inliers samples 
 # - total number of partitions = num_clients_per_class * num_classes
-def partition(x, y, num_clients_per_class=20, outlier_fraction=0.1,  random_state=config.get_config_dict()["seed"]):
+def partition(x, y, num_clients_per_class=20, outlier_fraction=0.1,  random_state=runconfig.get_config_dict()["seed"]):
     df = pd.DataFrame(x)
     df["y_class"] = y
     class_list = list(np.unique(y))
@@ -200,11 +201,6 @@ def get_dataset(dataset_name: str, flatten_and_normalize=False):
         (x_train, y_train), (x_test, y_test) = tf.keras.datasets.fashion_mnist.load_data()
     elif dataset_name == 'cifar10':
         (x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar10.load_data()
-    elif dataset_name == 'kminst':
-        x_train = np.load('./kmnist/kmnist-train-imgs.npz')['arr_0']
-        x_test = np.load('./kmnist/kmnist-test-imgs.npz')['arr_0']
-        y_train = np.load('./kmnist/kmnist-train-labels.npz')['arr_0']
-        y_test = np.load('./kmnist/kmnist-test-labels.npz')['arr_0']
     elif dataset_name == 'mnist_and_fmnist_merged': #  20 classes
         (x_train0, y_train0), (x_test0, y_test0) = tf.keras.datasets.mnist.load_data()
         (x_train1, y_train1), (x_test1, y_test1) = tf.keras.datasets.fashion_mnist.load_data()

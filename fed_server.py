@@ -10,6 +10,8 @@ import tensorflow as tf
 import flwr as fl
 
 from fed_models import *
+from datautil import *
+
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true' 
