@@ -132,7 +132,6 @@ def main() -> None:
     # Here Federeated Learning has finished
     # Now perform only local training and evaluation with the same model used in FL
 
-
     local_training = True
     if local_training:
         print('Start local training', args.partition, args.data_name)
@@ -184,8 +183,6 @@ def my_predict(model, x_train, x_test, y_train, y_test):
     distances = distancess(x_test, x_test_pred)
     labels = (distances > threshold).astype('int').ravel()
 
-
-
     y_true = y_test
     y_score = distances
     y_pred = labels
@@ -228,11 +225,6 @@ def load_partition(idx: str, data_name:str = 'mnist'):
     idx_test = str(inlier_class)+'_0'
     x_test_local = datasets_test[idx_test].iloc[:,:n_features].to_numpy()
     y_test_out_local =  datasets_test[idx_test]['y_out'].to_numpy()
-
-    
-    
-    
-    
 
 
     #return x_train_local, x_test_local
