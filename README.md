@@ -12,12 +12,10 @@ A method is in which clients are grouped into communities, each having similar m
 
 ## Installation
 
-This code is tested on Python3.9. To install the required dependencies, run:
-
-To install the required dependencies, run:
-
+This code is tested on Python 3.9. To install the required dependencies, run:
+```
 pip install -r requirements.txt
-
+```
 
 ## Usage
 
