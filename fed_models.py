@@ -36,12 +36,11 @@ class AutoencoderFlat(Model):
         self.n_features = n_features
         self.hidden_neurons = hidden_neurons
         self.dropout_rate = dropout_rate
-        # cambia il default ([64,32,64]) cosi eviti di dover passare hidden nei tre punti client server
         self.hidden_neurons = hidden_neurons
 
         first = [
             # tf.keras.Input(shape=(n_features,)),
-            #layers.Dropout(self.dropout_rate)
+            # layers.Dropout(self.dropout_rate) # to add dropout
         ]
         internal = []
 
