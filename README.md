@@ -8,7 +8,7 @@ This repository contains a Python implementation of the paper "Anomaly Detection
 
 Federated learning (FL) enables a set of clients to collaboratively train a machine learning model while keeping the data decentralized. This paper extends the FL paradigm to unsupervised tasks by addressing the problem of anomaly detection in decentralized settings.
 
-A method is in which clients are grouped into communities, each having similar majority (i.e., inlier) patterns. Each community of clients trains the same anomaly detection model (i.e., autoencoders) in a federated fashion. The resulting model is then shared and used to detect anomalies within the clients of the same community that joined the corresponding federated process.
+Clients are grouped into communities, each having similar majority (i.e., inlier) patterns. Each community of clients trains the same anomaly detection model (i.e., autoencoders) in a federated fashion. The resulting model is then shared and used to detect anomalies within the clients of the same community that joined the corresponding federated process.
 
 ## Installation
 
