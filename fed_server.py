@@ -57,7 +57,7 @@ def main() -> None:
         #),
     )
 
-
+# not used. Left untouched from template
 def get_eval_fn(model):
     """Return an evaluation function for server-side evaluation."""
 
